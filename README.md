@@ -8,9 +8,9 @@ Uses Windows DNS server debug logging and Microsoft Log Parser 2.2.
 
 DNS servers output log to local storage, log directory is shared read-only.
 
-An intermediate host is used to run a PowerShell script in Task Scheduler that reads the log over the network, parses it and outputs a CSV and HTML report for easy viewing. This removes the need for DCs / DNS hosts to run a script and users to login to retrieve the report.
+An intermediate host is used to run a PowerShell script via Task Scheduler that reads the log over the network, parses it and outputs a CSV and HTML report for easy viewing. This removes the need for DCs / DNS hosts to run a script and users to login to them to retrieve the report.
 
-The script is configured to only parse the log if has been X number of hours (e.g. 12) since the last report was generated and if the log file is over X (e.g. 50mb) size.  The Windows DNS server debug log is cleared and started fresh when max log size is reached, this way we can schedule the script to run every few minutes, and capture a reasonable amount of data a couple times a day, if nether condition is met, the script does nothing.
+The script is configured to only parse the log if has been X number of hours (e.g. 12) since the last report was generated and if the log file is over X (e.g. 50mb) size. The Windows DNS server debug log is cleared and started fresh when max log size is reached (this is by design). This way we can schedule the script to run every few minutes, and capture a reasonable amount of data a couple times a day, if nether condition is met, the script does nothing.
 
 ## Configuration
 
